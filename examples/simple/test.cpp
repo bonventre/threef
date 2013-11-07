@@ -76,13 +76,13 @@ int main(int argc, char* argv[]) {
     fff::samplers::Metropolis metropolis(jump_sigma);
     fff::LikelihoodSpace* lspace;
     fff::Fitter::BestFit* results = \
-      fit.markov(initial_params, data, metropolis, lspace);
+      fit.markov(initial_params, data, metropolis, 50000, 0.1, &lspace);
     std::cout << "markov: " << results->parameters[0]
               << ", nll = " << results->value << std::endl;
 
     // Calculate some intervals
-    fff::intervals::bayesian::Central central(0.9, lspace);
-    std::pair<double, double> interval = central("a");
+    fff::intervals::bayesian::Central central(lspace);
+    std::pair<double, double> interval = central(0.9,"a");
     std::cout << "Bayesian central: " << results->parameters[0]
               << " -" << results->parameters[0] - interval.first
               << " +" << interval.second - results->parameters[0]
