@@ -3,10 +3,10 @@
 #include <assert.h>
 #include <TMath.h>
 #include <TRandom.h>
-#include <aurore/sampler.h>
-#include <aurore/samplers/metropolis.h>
+#include <fff/sampler.h>
+#include <fff/samplers/metropolis.h>
 
-namespace aurore {
+namespace fff {
   namespace samplers {
 
 std::vector<double> Metropolis::propose_jump(const std::vector<double>& coordinates) const {
@@ -31,5 +31,5 @@ bool Metropolis::accept(const double current, const double proposed) const {
 }
 
   }  // namespace samplers
-}  // namespace aurore
+}  // namespace fff
 

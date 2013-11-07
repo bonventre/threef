@@ -5,13 +5,13 @@
 #include <Minuit2/MnUserParameters.h>
 #include <Minuit2/MnMigrad.h>
 #include <Minuit2/FunctionMinimum.h>
-#include <aurore/fitter.h>
-#include <aurore/likelihood.h>
-#include <aurore/migrad.h>
-#include <aurore/sampler.h>
-#include <aurore/samplers/metropolis.h>
+#include <fff/fitter.h>
+#include <fff/likelihood.h>
+#include <fff/migrad.h>
+#include <fff/sampler.h>
+#include <fff/samplers/metropolis.h>
 
-namespace aurore {
+namespace fff {
 
 ROOT::Minuit2::FCNBase* Fitter::get_minuit2_fcn(Dataset* data) {
   return new MigradFCN(this, data);
@@ -19,7 +19,7 @@ ROOT::Minuit2::FCNBase* Fitter::get_minuit2_fcn(Dataset* data) {
 
 Fitter::BestFit*
 Fitter::migrad(const std::vector<double>& initial_params, Dataset* data) {
-  ROOT::Minuit2::FCNBase* fcn = new aurore::MigradFCN(this, data);
+  ROOT::Minuit2::FCNBase* fcn = new fff::MigradFCN(this, data);
   std::vector<double> errors(initial_params.size(), 0);  // FIXME
 
   ROOT::Minuit2::MnUserParameters mn_params_initial(initial_params, errors);
@@ -27,7 +27,7 @@ Fitter::migrad(const std::vector<double>& initial_params, Dataset* data) {
   ROOT::Minuit2::FunctionMinimum min = mn_migrad();  // FIXME maxfcn, tol
   ROOT::Minuit2::MnUserParameters mn_params = min.UserParameters();
 
-  aurore::Fitter::BestFit* best_fit = new aurore::Fitter::BestFit;
+  fff::Fitter::BestFit* best_fit = new fff::Fitter::BestFit;
   best_fit->value = min.Fval();
   for (size_t i=0; i<mn_params.Params().size(); i++) {
     best_fit->parameters.push_back(mn_params.Params()[i]);
@@ -116,5 +116,5 @@ Fitter::markov(const std::vector<double>& initial_params,
                 burnin_fraction);
 }
 
-}  // namespace aurore
+}  // namespace fff
 

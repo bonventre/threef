@@ -1,7 +1,7 @@
-#ifndef __AURORE_NEYMAN__
-#define __AURORE_NEYMAN__
+#ifndef __FFF_NEYMAN__
+#define __FFF_NEYMAN__
 
-namespace aurore {
+namespace fff {
 
 class LikelihoodSpace;
 
@@ -19,7 +19,7 @@ class NeymanInterval {
     LikelihoodSpace* likelihood_space;
 };
 
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_NEYMAN__
+#endif  // __FFF_NEYMAN__
 

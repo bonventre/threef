@@ -1,5 +1,5 @@
-#ifndef __AURORE_FITTER__
-#define __AURORE_FITTER__
+#ifndef __FFF_FITTER__
+#define __FFF_FITTER__
 
 #include <vector>
 #include <string>
@@ -10,7 +10,7 @@ namespace ROOT {
   }
 }
 
-namespace aurore {
+namespace fff {
 
 class Sampler;
 class LikelihoodSpace;
@@ -56,7 +56,7 @@ class Fitter {
     /**
      * Get a Minuit2 FCNBase object given the NLL function and data.
      *
-     * Use this to take an aurore::Fitter and use it in Minuit2.
+     * Use this to take an fff::Fitter and use it in Minuit2.
      *
      * \param[in] data The dataset to fit
      * \returns A Minuit2 FCNBase to plug into a Minuit2 fit
@@ -145,7 +145,7 @@ class FitSimple : public Fitter {
       MCFunction mc_function;  //!< The data generation function
 };
 
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_FITTER
+#endif  // __FFF_FITTER
 

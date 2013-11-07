@@ -1,10 +1,10 @@
-#ifndef __AURORE_MIGRAD__
-#define __AURORE_MIGRAD__
+#ifndef __FFF_MIGRAD__
+#define __FFF_MIGRAD__
 
 #include <vector>
 #include <Minuit2/FCNBase.h>
 
-namespace aurore {
+namespace fff {
 
 class Fitter;
 class Dataset;
@@ -23,7 +23,7 @@ class MigradFCN : public ROOT::Minuit2::FCNBase {
     Dataset* data;
 };
 
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_MIGRAD__
+#endif  // __FFF_MIGRAD__
 

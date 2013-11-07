@@ -1,9 +1,9 @@
-#ifndef __AURORE_SAMPLERS_METROPOLIS__
-#define __AURORE_SAMPLERS_METROPOLIS__
+#ifndef __FFF_SAMPLERS_METROPOLIS__
+#define __FFF_SAMPLERS_METROPOLIS__
 
 #include <vector>
 
-namespace aurore {
+namespace fff {
   namespace samplers {
 
 class Metropolis : public Sampler {
@@ -19,7 +19,7 @@ class Metropolis : public Sampler {
 };
 
   }  // namespace samplers
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_SAMPLERS_METROPOLIS__
+#endif  // __FFF_SAMPLERS_METROPOLIS__
 

@@ -4,11 +4,11 @@
 #include <utility>
 #include <vector>
 #include <TH1F.h>
-#include <aurore/likelihood.h>
-#include <aurore/neyman.h>
-#include <aurore/intervals/bayesian/central.h>
+#include <fff/likelihood.h>
+#include <fff/neyman.h>
+#include <fff/intervals/bayesian/central.h>
 
-namespace aurore {
+namespace fff {
   namespace intervals {
     namespace bayesian {
 
@@ -42,5 +42,5 @@ std::pair<double, double> Central::operator()(std::string param) {
 
     }  // namespace bayesian
   }  // namespace intervals
-}  // namespace aurore
+}  // namespace fff
 

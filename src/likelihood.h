@@ -1,5 +1,5 @@
-#ifndef __AURORE_LIKELIHOOD__
-#define __AURORE_LIKELIHOOD__
+#ifndef __FFF_LIKELIHOOD__
+#define __FFF_LIKELIHOOD__
 
 #include <vector>
 #include <utility>
@@ -8,7 +8,7 @@
 class TNtuple;
 class TH1F;
 
-namespace aurore {
+namespace fff {
 
 /**
  * Likelihood space.
@@ -81,7 +81,7 @@ class LikelihoodSpace {
     TNtuple* samples_ntuple;  //!< Samples of the likelihood function
 };
 
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_LIKELIHOOD__
+#endif  // __FFF_LIKELIHOOD__
 

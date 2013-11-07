@@ -1,12 +1,12 @@
 #include <vector>
-#include <aurore/fitter.h>
-#include <aurore/migrad.h>
+#include <fff/fitter.h>
+#include <fff/migrad.h>
 
-namespace aurore {
+namespace fff {
 
 double MigradFCN::operator()(const std::vector<double>& params) const {
   return this->fitter->nll(params, this->data);
 };
 
-}  // namespace aurore
+}  // namespace fff
 

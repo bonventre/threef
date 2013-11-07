@@ -1,9 +1,9 @@
-#ifndef __AURORE_SAMPLER__
-#define __AURORE_SAMPLER__
+#ifndef __FFF_SAMPLER__
+#define __FFF_SAMPLER__
 
 #include <vector>
 
-namespace aurore {
+namespace fff {
 
 /** A PDF sampler. */
 class Sampler {
@@ -15,7 +15,7 @@ class Sampler {
     virtual bool accept(const double current, const double proposed) const = 0;
 };
 
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_SAMPLER__
+#endif  // __FFF_SAMPLER__
 

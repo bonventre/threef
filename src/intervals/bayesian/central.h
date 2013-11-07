@@ -1,11 +1,11 @@
-#ifndef __AURORE_INTERVALS_BAYESIAN_CENTRAL__
-#define __AURORE_INTERVALS_BAYESIAN_CENTRAL__
+#ifndef __FFF_INTERVALS_BAYESIAN_CENTRAL__
+#define __FFF_INTERVALS_BAYESIAN_CENTRAL__
 
 #include <utility>
 #include <string>
-#include <aurore/neyman.h>
+#include <fff/neyman.h>
 
-namespace aurore {
+namespace fff {
   class LikelihoodSpace;
   namespace intervals {
     namespace bayesian {
@@ -22,7 +22,7 @@ class Central : public NeymanInterval {
 
     }  // namespace bayesian
   }  // namespace intervals
-}  // namespace aurore
+}  // namespace fff
 
-#endif  // __AURORE_INTERVALS_BAYESIAN_CENTRAL__
+#endif  // __FFF_INTERVALS_BAYESIAN_CENTRAL__
 

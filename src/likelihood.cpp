@@ -9,9 +9,9 @@
 #include <TEnv.h>
 #include <TH1F.h>
 #include <TNtuple.h>
-#include <aurore/likelihood.h>
+#include <fff/likelihood.h>
 
-namespace aurore {
+namespace fff {
 
 LikelihoodSpace::ParamSorter::ParamSorter(
       std::string param, std::vector<std::string> param_names) {
@@ -91,5 +91,5 @@ TH1F* LikelihoodSpace::get_projection(std::string name, std::string cut) {
   return h;
 }
 
-}  // namespace aurore
+}  // namespace fff
 

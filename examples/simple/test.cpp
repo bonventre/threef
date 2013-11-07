@@ -7,14 +7,14 @@
 #include <Minuit2/MnMigrad.h>
 #include <Minuit2/FunctionMinimum.h>
 #include <Minuit2/MnMinos.h>
-#include <aurore/fitter.h>
-#include <aurore/likelihood.h>
-#include <aurore/neyman.h>
-#include <aurore/sampler.h>
-#include <aurore/samplers/metropolis.h>
-#include <aurore/intervals/bayesian/central.h>
+#include <fff/fitter.h>
+#include <fff/likelihood.h>
+#include <fff/neyman.h>
+#include <fff/sampler.h>
+#include <fff/samplers/metropolis.h>
+#include <fff/intervals/bayesian/central.h>
 
-class MyData : public aurore::Dataset {
+class MyData : public fff::Dataset {
   public:
     MyData(double _truth) : truth(_truth) {}
     virtual ~MyData() {}
@@ -23,7 +23,7 @@ class MyData : public aurore::Dataset {
 };
 
 
-double myNLL(const std::vector<double>& params, aurore::Dataset* data) {
+double myNLL(const std::vector<double>& params, fff::Dataset* data) {
   MyData* mydata = dynamic_cast<MyData*>(data);
   
   if (params[0] < 0 || params[0] > TMath::Power(mydata->truth, 2)) {
@@ -34,7 +34,7 @@ double myNLL(const std::vector<double>& params, aurore::Dataset* data) {
                                              mydata->truth, 2));
 }
 
-aurore::Dataset* myMC(const std::vector<double>& params) {
+fff::Dataset* myMC(const std::vector<double>& params) {
   return new MyData(params[0]);
 }
 
@@ -42,14 +42,14 @@ int main(int argc, char* argv[]) {
   std::vector<double> initial_params(1, 5.0);
   std::vector<std::string> param_names(1, "a");
 
-  aurore::FitSimple fit(param_names, &myNLL, &myMC);
-  aurore::Dataset* data = fit.generate_data(initial_params);
+  fff::FitSimple fit(param_names, &myNLL, &myMC);
+  fff::Dataset* data = fit.generate_data(initial_params);
   std::cout << "The correct answer is 5.0, with a likelihood of 0.0"
             << std::endl << std::endl;
 
   // Fit with MIGRAD
   {
-    aurore::Fitter::BestFit* results = fit.migrad(initial_params, data);
+    fff::Fitter::BestFit* results = fit.migrad(initial_params, data);
     std::cout << "migrad: " << results->parameters[0]
               << ", nll = " << results->value << std::endl;
     delete results;
@@ -73,15 +73,15 @@ int main(int argc, char* argv[]) {
   // Fit with a Markov Chain Monte Carlo, using the Metropolis algorithm
   {
     std::vector<double> jump_sigma(1, 5);
-    aurore::samplers::Metropolis metropolis(jump_sigma);
-    aurore::LikelihoodSpace* lspace;
-    aurore::Fitter::BestFit* results = \
+    fff::samplers::Metropolis metropolis(jump_sigma);
+    fff::LikelihoodSpace* lspace;
+    fff::Fitter::BestFit* results = \
       fit.markov(initial_params, data, metropolis, lspace);
     std::cout << "markov: " << results->parameters[0]
               << ", nll = " << results->value << std::endl;
 
     // Calculate some intervals
-    aurore::intervals::bayesian::Central central(0.9, lspace);
+    fff::intervals::bayesian::Central central(0.9, lspace);
     std::pair<double, double> interval = central("a");
     std::cout << "Bayesian central: " << results->parameters[0]
               << " -" << results->parameters[0] - interval.first
